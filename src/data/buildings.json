@@ -1,0 +1,76 @@
+[
+    {
+        "_id": {
+            "$oid": "3333"
+        },
+        "buildingPassword":"3a",
+        "address": {
+            "city": "jerusalem",
+            "st": "shmuel hanavi",
+            "house number": 55
+        },
+        "neighbors": [
+            {
+                "userName": "John",
+                "fName": "avi",
+                "lName": "cohen",
+                "phone": "055-5575567",
+                "password": "1234",
+                "messages": [
+                    {
+                        "title": "hello"
+                        
+                    },
+                    {
+                        "title": "byby"
+                        
+                    }
+                ],
+                "payment_itemization": [
+                    {
+                        "paymentType": "monthly",
+                        "sum" :50
+                        
+                    },
+                    {
+                        "paymentType": "fix",
+                        "sum" :35
+                    }
+                ],
+                "isActive": true,
+                "isResponsible": true
+            },
+            
+            {
+                "fName": "avi",
+                "lName": "cohen",
+                "phone": "055-5575567",
+                "password": "12345",
+                "messages": [
+                    {
+                        "title": "hello"
+                        
+                    },
+                    {
+                        "title": "byby"
+                        
+                    }
+                ],
+                "payment_itemization": [
+                    {
+                        "paymentType": "monthly",
+                        "sum" :50
+                        
+                    },
+                    {
+                        "paymentType": "fix",
+                        "sum" :35
+                    }
+                ],
+                "isActive": true,
+                "isResponsible": true
+            }
+        ]
+    }
+    
+]
