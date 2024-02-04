@@ -25,14 +25,28 @@ export default function Messages() {
   // const firstBuilding = buildings[0];
 
   return (
+    // <div>
+    //   {buildings[0] && buildings[0].neighbors.map((neighbor, index) => (
+    //     <div key={index}>
+    //       <div className="">{neighbor.fName} {neighbor.lName}</div>
+    //       <div>{buildings[0].date}</div>
+    //       <div>{neighbor.messages.join(', ')}</div>
+    //     </div>
+    //   ))}
+    // </div>
     <div>
-      {buildings[0] && buildings[0].neighbors.map((neighbor, index) => (
-        <div key={index}>
-          <div className="">{neighbor.fName} {neighbor.lName}</div>
-          <div>{buildings[0].date}</div>
-          <div>{neighbor.messages.join(', ')}</div>
-        </div>
-      ))}
+  {buildings[0] && buildings[0].neighbors.map((neighbor, index) => (
+    <div key={index}>
+      <div className="">{neighbor.fName} {neighbor.lName}</div>
+      <div>{buildings[0].date}</div>
+      <div>
+        {neighbor.messages.map((message, msgIndex) => (
+          <div key={msgIndex}>{message.title}</div>
+        ))}
+      </div>
     </div>
+  ))}
+</div>
+
   );
 }
