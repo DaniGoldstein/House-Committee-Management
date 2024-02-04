@@ -1,6 +1,8 @@
 
- import buildings from '../../data/buildings.json'
- import style from './style.module.css'
+ import buildings from '../../data/buildings.json';
+ import style from './style.module.css';
+ import { useState, useEffect } from 'react';
+ import axios from 'axios';
 
 
 import * as React from 'react';
@@ -36,10 +38,38 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const [{neighbors}]=buildings;
-console.log(neighbors);
 
-export default function NaigborsDetails() {
+
+
+export default function NeighborsDetails() {
+
+  const [{neighbors}]=buildings;
+ 
+ 
+  useEffect(() => {
+    getAllNeighborsDetails();
+  }, []);
+
+const [neighborsDetails,setNeighborsDetails]=useState([]);
+
+async function getAllNeighborsDetails() {
+  try {
+    const response = await axios.get('http://localhost:3535/neighbors', {
+      headers: { "building_password": "3a" }
+    });
+    setNeighborsDetails(response.data);
+    console.log(response.data);
+  } catch (error) {
+    console.error("Error fetching neighbors details:", error);
+  }
+}
+
+// async function getAllNeighborsDetails(){
+ 
+//   await axios.get('http://localhost:3535/neighbors',
+//   {headers:{"buildingPassword":"3a"}}).then((data)=>console.log(data)).catch(err=>console.log(err))}
+ 
+
   return (
     <div >
     <TableContainer component={Paper} >
@@ -53,7 +83,7 @@ export default function NaigborsDetails() {
         </TableHead>
         
         <TableBody >
-          {neighbors.map((row) => (
+          {neighborsDetails.length>0&&neighborsDetails.map((row) => (
             <StyledTableRow >
               <StyledTableCell align="center">
               {row.fName+" "+row.lName}
