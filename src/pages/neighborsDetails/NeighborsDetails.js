@@ -54,8 +54,10 @@ const [neighborsDetails,setNeighborsDetails]=useState([]);
 
 async function getAllNeighborsDetails() {
   try {
-    const response = await axios.get('http://localhost:3535/neighbors', {
-      headers: { "building_password": "3a" }
+    const response = await axios.get('http://localhost:3535/building/neighborsDetails', {
+      headers: { "password": "1234" , "userName":"mosheq"}
+     
+      
     });
     setNeighborsDetails(response.data);
     console.log(response.data);
@@ -92,7 +94,7 @@ async function getAllNeighborsDetails() {
                 {row.phone}
               </StyledTableCell>
               <StyledTableCell component="th" scope="row" align="center">
-                {row.email}
+                {row.email&&row.email}
               </StyledTableCell>
             </StyledTableRow>
           ))}
