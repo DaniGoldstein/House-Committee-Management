@@ -37,6 +37,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const [{neighbors}]=buildings;
+
 console.log(neighbors);
 
 export default function NaigborsDetails() {
