@@ -5,7 +5,8 @@ import messagesData from '../data/messages.json'
 // import Administrator from './components/administratorComponents/Administrator';
 import Header from './header/Header'
 import Content from './content/Content';
-import Nav from './Nav/Nav';
+
+import Navbar from './navbar/Navbar';
 // export const dataContext = createContext();
 
 
@@ -26,7 +27,7 @@ function Layout() {
     <>
       <Header />
       <Content />
-      <Nav/>
+      <Navbar/>
    
     </>
   )

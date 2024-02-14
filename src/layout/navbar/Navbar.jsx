@@ -32,7 +32,7 @@ export  default function Navbar() {
           <Link to="homePortal/messages">הודעות    ועד-הבית</Link>
         </li>
         <li>
-          <Link to="homePortal/neighborsMessages">הודעות דיירים</Link>
+          <Link to="neighborsMessages">הודעות דיירים</Link>
         </li>
         {/* Add more links as needed */}
         <li>
@@ -46,7 +46,7 @@ export  default function Navbar() {
           <Link to="/about">    פירוט תשלומים </Link>
         </li>
         <li>
-          <Link to="homePortal/neighborsDetails">    פרטי דיירים</Link>
+          <Link to="neighborsDetails">    פרטי דיירים</Link>
         </li>
         <li>
           <Link to="/about">    עדכן פרטי תשלום</Link>
