@@ -2,6 +2,7 @@
 import buildings from '../../data/buildings.json'
 import neighbors from '../../data/neighbors.json'
 import style from './style.module.css'
+import Table3columns from '../../components/all/table/Table3columns';
 
 
 import * as React from 'react';
@@ -40,10 +41,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function NeighborsMessages() {
     return (
         <div>
-            <TableContainer component={Paper} 
-            // style={{width:"100%", overflowX:"auto",}} 
-            >
-                <Table sx={{ minWidth: 300 }} aria-label="customized table">
+            <Table3columns th1={"שם"} th2={"הודעה"} th3={"תאריך"} arrContent={buildings[0].neighbors}/>
+            {/* <TableContainer component={Paper}  */}
+            {/* // style={{width:"100%", overflowX:"auto",}}  */}
+          
+                {/* <Table sx={{ minWidth: 300 }} aria-label="customized table">
                     <TableHead >
                         <TableRow>
                             <StyledTableCell align="center">שם</StyledTableCell>
@@ -73,7 +75,7 @@ export default function NeighborsMessages() {
                         ))}
                     </TableBody>
                 </Table>
-            </TableContainer>
+            </TableContainer> */}
 
             {/* {buildings[0] && buildings[0].neighbors.map((neighbor, index) => (
                 <div key={index}>

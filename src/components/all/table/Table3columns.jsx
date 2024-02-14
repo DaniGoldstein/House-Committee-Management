@@ -37,32 +37,35 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export default function Table() {
+export default function Table3columns({th1,th2,th3,arrContent}) {
+  // var valuesArray= Object.values(arrContent);
+  // console.log(valuesArray);
   return (
     <div>
       <TableContainer component={Paper} >
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead >
             <TableRow>
-              <StyledTableCell align="center">שם</StyledTableCell>
-              <StyledTableCell align="center">טלפון</StyledTableCell>
-              <StyledTableCell align="center">אימייל</StyledTableCell>
+              <StyledTableCell align="center">{th1}</StyledTableCell>
+              <StyledTableCell align="center">{th2}</StyledTableCell>
+              <StyledTableCell align="center">{th3}</StyledTableCell>
             </TableRow>
           </TableHead>
 
           <TableBody >
-            {neighborsDetails.length > 0 && neighborsDetails.map((row) => (
+            {arrContent && arrContent.length > 0 && arrContent.map((row) => (
+            <>   
               <StyledTableRow >
                 <StyledTableCell align="center">
-                  {row.fName + " " + row.lName}
+                   {Object.values(row)[0]}
                 </StyledTableCell>
                 <StyledTableCell component="th" scope="row" align="center">
-                  {row.phone}
+                {Object.values(row)[1]}
                 </StyledTableCell>
                 <StyledTableCell component="th" scope="row" align="center">
-                  {row.email && row.email}
+                {Object.values(row)[2] && Object.values(row)[2]}
                 </StyledTableCell>
-              </StyledTableRow>
+              </StyledTableRow></>
             ))}
           </TableBody>
         </Table>
