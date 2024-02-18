@@ -3,7 +3,8 @@ import buildings from '../../data/buildings.json'
 import neighbors from '../../data/neighbors.json'
 import style from './style.module.css'
 import Table3columns from '../../components/all/table/Table3columns';
-
+import allBuildingContext from '../../BuildingContext';
+import { useContext,useState,useEffect } from 'react';
 
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
@@ -39,9 +40,21 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 export default function NeighborsMessages() {
+
+ const {allBuildingDetails,setAllBuildingDetails} = useContext(allBuildingContext);
+console.log(allBuildingDetails,"Building");
+
+  const [neighborsMessages, setNeighborsMessages] = useState();
+
+
+  useEffect(() => {
+    allBuildingDetails && setNeighborsMessages(allBuildingDetails.neighborsMessages
+        );  
+   
+  }, [allBuildingDetails]);
     return (
         <div>
-            <Table3columns th1={"שם"} th2={"הודעה"} th3={"תאריך"} arrContent={buildings[0].neighbors}/>
+            <Table3columns th1={"שם"} th2={"הודעה"} th3={"תאריך"} arrContent={neighborsMessages}/>
             {/* <TableContainer component={Paper}  */}
             {/* // style={{width:"100%", overflowX:"auto",}}  */}
           
