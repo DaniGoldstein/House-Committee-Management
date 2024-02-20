@@ -36,7 +36,7 @@ export  default function Navbar() {
         </li>
         {/* Add more links as needed */}
         <li>
-          <Link to="/about">  צור הודעה חדשה </Link>
+          <Link to="newMessage">  צור הודעה חדשה </Link>
         </li>
         <li>
           <Link to="/about">דוחו"ת כספיים</Link>
