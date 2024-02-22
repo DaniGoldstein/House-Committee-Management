@@ -22,7 +22,7 @@ export default function Content() {
 
         <p className={style.contentText}>
           <Routes>
-            <Route path='/mainMessages' element={<MainMessages />}>   </Route>
+            <Route path='/messages' element={<MainMessages />}>   </Route>
             <Route path='/neighborsMessages' element={<NeighborsMessages />}>   </Route>
             <Route path='/paymentDetails' element={<PaymentDetails />}></Route>
             <Route path='/neighborsDetails' element={<NeighborsDetails />}></Route>

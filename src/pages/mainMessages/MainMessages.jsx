@@ -1,19 +1,21 @@
-import React, { useState } from 'react'
-import axios from 'axios';
-// import { useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 
-import buildings from '../../data/buildings.json';
+import allBuildingContext from '../../BuildingContext';
+import Table3columns from '../../components/all/table/Table3columns';
+
 
 
 
 export default function MainMessages() {
 
-  const [messages,setMessages]=useState('');
+  const { allBuildingDetails } = useContext(allBuildingContext);
 
-   async function getMainMessages () {
-    const response= await axios.get()
-   };
-  
+  const [messages, setMessages] = useState('');
+
+  useEffect(() => { setMessages(allBuildingDetails.generalMessages); }, [allBuildingContext])
+
+
+
 
 
 
@@ -21,18 +23,11 @@ export default function MainMessages() {
   return (
 
     <div>
-  {buildings[0] && buildings[0].neighbors.map((neighbor, index) => (
-    <div key={index}>
-      <div className="">{neighbor.fName} {neighbor.lName}</div>
-      <div>{buildings[0].date}</div>
-      <div>
-        {neighbor.messages.map((message, msgIndex) => (
-          <div key={msgIndex}>{message.title}</div>
-        ))}
-      </div>
+      {messages.length == 0 ? "אין הודעות" :
+        <Table3columns th2={"הודעה"} th3={"תאריך"} arrContent={messages} />
+      }
+
     </div>
-  ))}
-</div>
 
   );
 }

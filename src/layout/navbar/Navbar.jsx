@@ -29,7 +29,7 @@ export  default function Navbar() {
       <div className={style.sidebar}>
       <ul>
         <li>
-          <Link to="homePortal/messages">הודעות    ועד-הבית</Link>
+          <Link to="messages">הודעות    ועד-הבית</Link>
         </li>
         <li>
           <Link to="neighborsMessages">הודעות דיירים</Link>
