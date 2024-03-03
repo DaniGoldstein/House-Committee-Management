@@ -7,6 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 export default function NewMessage () {
   const [open, setOpen] = React.useState(false);
@@ -21,7 +22,10 @@ export default function NewMessage () {
 
   let message='';
   async function sendMessageToServer(){
-   
+    try{
+   let result=axios.post('http://localhost:3535/building/neighborMessage',{title:message},
+   {headers:{ authtoken: Cookies.get('token')}});console.log(result.data);}
+   catch(err){console.log(err);}
   }
   return (
     <React.Fragment>
