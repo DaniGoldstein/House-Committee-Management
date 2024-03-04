@@ -1,11 +1,11 @@
 import React from 'react'
 import style from './style.module.css'
 import { Route, Routes } from 'react-router'
-import MainMessages from '../../pages/mainMessages/MainMessages'
-import PaymentDetails from '../../pages/paymentDetails/PaymentDetails'
-import NeighborsDetails from '../../pages/neighborsDetails/NeighborsDetails'
-import NeighborsMessages from '../../pages/neighborsMessages/NeighborsMessages'
-import NewMessage from '../../pages/newMessage/NewMessage'
+import MainMessages from '../../contentPages/mainMessages/MainMessages'
+import PaymentDetails from '../../contentPages/paymentDetails/PaymentDetails'
+import NeighborsDetails from '../../contentPages/neighborsDetails/NeighborsDetails'
+import NeighborsMessages from '../../contentPages/neighborsMessages/NeighborsMessages'
+import NewMessage from '../../contentPages/newMessage/NewMessage'
 export default function Content() {
 
 

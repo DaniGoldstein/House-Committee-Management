@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import allBuildingContext from './BuildingContext';
-
+import Login from './login/Login';
 import Layout from './layout';
 
 
@@ -39,6 +39,7 @@ function App() {
     <div>
       <allBuildingContext.Provider value={{ allBuildingDetails, setAllBuildingDetails }}>
         <Routes>
+        <Route path='/homePortal/login' element={<Login/>}></Route>
           <Route path='/homePortal/*' element={<Layout />}></Route>
         </Routes>
       </allBuildingContext.Provider>
