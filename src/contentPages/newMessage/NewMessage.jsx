@@ -21,10 +21,14 @@ export default function NewMessage () {
   };
 
   let message='';
+
   async function sendMessageToServer(){
+    
     try{
-   let result=axios.post('http://localhost:3535/building/neighborMessage',{title:message},
-   {headers:{ authtoken: Cookies.get('token')}});console.log(result.data);}
+   let result=axios.post('http://localhost:3535/building/neighborMessage',
+   {title:message},
+   {headers:{ authtoken: Cookies.get('Token')}});console.log(result.data);}
+
    catch(err){console.log(err);}
   }
   return (

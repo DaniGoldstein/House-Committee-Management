@@ -1,14 +1,19 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import {useNavigate } from "react-router-dom"
 import style from './style.module.css';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 
 
 export default function Login() {
 
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    
+  },[])
   const sendValue = {
     userName: "",
     password: "",
@@ -65,9 +70,10 @@ export default function Login() {
           password: formValues.password
         }
       })
-      console.log(response.data);
-      if (response.data) {
-        console.log("acces");
+      const token='Bearer '+response.data['accessToken'];
+      console.log(token);
+      if (token) {
+        Cookies.set('Token',token);
         navigate("/homePortal");
       }
     }
