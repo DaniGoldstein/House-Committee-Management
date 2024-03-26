@@ -10,7 +10,7 @@ import { useContext,useState,useEffect } from 'react';
 export default function NeighborsMessages() {
 
 const {allBuildingDetails,setAllBuildingDetails} = useContext(allBuildingContext);
-console.log(allBuildingDetails,"Building");
+
 
   const [neighborsMessages, setNeighborsMessages] = useState();
 

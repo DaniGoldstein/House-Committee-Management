@@ -1,6 +1,6 @@
 import React from 'react';
-import { useState,useEffect } from 'react';
-import {useNavigate } from "react-router-dom"
+import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom"
 import style from './style.module.css';
 import axios from 'axios';
 import Cookies from 'js-cookie';
@@ -11,9 +11,9 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  useEffect(()=>{
-    
-  },[])
+  useEffect(() => {
+
+  }, [])
   const sendValue = {
     userName: "",
     password: "",
@@ -22,9 +22,10 @@ export default function Login() {
   const [formErrors, setFormErrors] = useState({});
 
   const handleChange = (e) => {
+    setFormErrors({})
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-   
+
 
   }
   const handleSubmit = (e) => {
@@ -64,20 +65,22 @@ export default function Login() {
 
     try {
 
-      let response = await axios.post('http://localhost:3535/login',{},{
+      let response = await axios.post('http://localhost:3535/login', {}, {
         headers: {
           username: formValues.userName,
           password: formValues.password
         }
       })
-      const token='Bearer '+response.data['accessToken'];
+      const token = 'Bearer ' + response.data['accessToken'];
       console.log(token);
       if (token) {
-        Cookies.set('Token',token);
+        Cookies.set('Token', token);
         navigate("/homePortal");
       }
+
     }
     catch (err) {
+      console.log("IncorrectDetails"); setFormErrors({ IncorrectDetails: "אחד הפרטים שגויים" })
       console.log(err);
 
     }
@@ -100,8 +103,11 @@ export default function Login() {
           <p> {formErrors.password}</p>
           <input type="password" id="password" name="password"
             onChange={handleChange} />
-
+          <p style={{margin:"auto",
+                     color:"red"}}>
+          {formErrors.IncorrectDetails}</p>
           <button type="submit">כניסה</button>
+
         </form>
       </div>
     </div>

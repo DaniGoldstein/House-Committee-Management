@@ -45,3 +45,6 @@
   button:hover {
     background-color: #948a8a;
   }
+
+  p {margin:auto;
+       color:red}

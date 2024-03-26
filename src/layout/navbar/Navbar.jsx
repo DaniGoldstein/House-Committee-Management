@@ -1,60 +1,57 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from './style.module.css'
 import { Link } from 'react-router-dom';
 
-// import {
-//   Card,
-//   Typography,
-//   List,
-//   ListItem,
-//   ListItemPrefix,
-//   ListItemSuffix,
-//   Chip,
-// } from "@material-tailwind/react";
-// import {
-//   PresentationChartBarIcon,
-//   ShoppingBagIcon,
-//   UserCircleIcon,
-//   Cog6ToothIcon,
-//   InboxIcon,
-//   PowerIcon,
-// } from "@heroicons/react/24/solid";
 
 
 
-export  default function Navbar() {
+
+export default function Navbar() {
+
+  const [displayMessageNav, setDisplayMessageNav] = useState("none");
   return (
-  
- 
-      <div className={style.sidebar}>
+
+
+    <div className={style.sidebar}>
       <ul>
         <li>
-          <Link to="messages">הודעות    ועד-הבית</Link>
+          <Link to="messages" className={style.mainSidebar}>הודעות    ועד-הבית</Link>
         </li>
         <li>
-          <Link to="neighborsMessages">הודעות דיירים</Link>
+          <Link to="neighborsMessages" className={style.mainSidebar}>הודעות דיירים</Link>
         </li>
-        {/* Add more links as needed */}
+        <div onMouseEnter={() => setDisplayMessageNav("block")}
+             onMouseLeave={() => setDisplayMessageNav("none")}>
+          <li className={style.mainSidebar} >
+            ההודעות שלי
+            <ul style={{ display: displayMessageNav }}>
+
+              <li>
+                <Link to="newMessage" className={style.subSidebar}>  צור הודעה חדשה </Link>
+              </li>
+              <li>
+                <Link to="deleteMessage" className={style.subSidebar}>  מחק הודעה קיימת</Link>
+              </li>
+            </ul>
+          </li>
+        </div>
         <li>
-          <Link to="newMessage">  צור הודעה חדשה </Link>
+          <Link to="/about" className={style.mainSidebar}>דוחו"ת כספיים</Link>
+        </li>
+
+        <li>
+          <Link to="/about" className={style.mainSidebar}>    פירוט תשלומים </Link>
         </li>
         <li>
-          <Link to="/about">דוחו"ת כספיים</Link>
-        </li>
-      
-        <li>
-          <Link to="/about">    פירוט תשלומים </Link>
+          <Link to="neighborsDetails" className={style.mainSidebar}>    פרטי דיירים</Link>
         </li>
         <li>
-          <Link to="neighborsDetails">    פרטי דיירים</Link>
-        </li>
-        <li>
-          <Link to="/about">    עדכן פרטי תשלום</Link>
+          <Link to="/about" className={style.mainSidebar}>    עדכן פרטי תשלום</Link>
         </li>
       </ul>
     </div>
-      );
-    
-  };
-  
+  );
+
+};
+
 

@@ -11,47 +11,78 @@ import Cookies from 'js-cookie';
 
 export default function NewMessage () {
   const [open, setOpen] = React.useState(false);
+  const [inputErrors, setInputErrors] = React.useState();
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   let message='';
 
+  const handleClose = () => {
+   
+    if(message.length===0){
+    setInputErrors("לא נרשמה הודעה")  
+    setTimeout(() => {
+      setInputErrors('')
+      setOpen(false)
+   }, 1000);
+    }
+      else { setOpen(false);}}
+
+  
+
+  const changeMessage = (e) => {
+    const newMessage = e.target.value;
+    console.log(newMessage.length);
+    message = newMessage;
+    console.log(message.length);
+    if (newMessage.length >= 150) {
+      setInputErrors(" עברת את ה-150 תווים");
+      
+    } else {
+      setInputErrors('');
+    
+      
+    }
+  }
+  
+
   async function sendMessageToServer(){
+    if(message.length==0){
+      return;};
     
     try{
-   let result=axios.post('http://localhost:3535/building/neighborMessage',
-   {title:message},
-   {headers:{ authtoken: Cookies.get('Token')}});console.log(result.data);}
+       let result=axios.post('http://localhost:3535/building/neighborMessage',
+       {title:message.substring(0,150)},
+       {headers:{ authtoken: Cookies.get('Token')}});console.log(result.data);}
 
    catch(err){console.log(err);}
   }
-  return (
+    return (
     <React.Fragment>
       <Button variant="outlined" onClick={handleClickOpen} style={{color:"black", borderColor:"black"}}>
-        צור הודעה
+            צור הודעה
       </Button>
       <Dialog
         open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+           onClose={handleClose}
+           aria-labelledby="alert-dialog-title"
+           aria-describedby="alert-dialog-description"
       >
     
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-          <div>
-            <textarea rows="4" cols="50" onChange={(e)=>{message=e.target.value; console.log(message);}}> </textarea>
-          </div>
+          <p style={{color:"red"}} id='lengthError'>{inputErrors}</p>
+            <div>
+              <textarea rows="4" cols="50" placeholder='ניתן לרשום עד 150 תווים' 
+              onChange={changeMessage}></textarea>
+           </div>
+           
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={()=>{handleClose();sendMessageToServer()}}>Disagree</Button>
+          <Button onClick={()=>{handleClose();sendMessageToServer()}}>שלח</Button>
          
          
         </DialogActions>

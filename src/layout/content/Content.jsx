@@ -6,6 +6,7 @@ import PaymentDetails from '../../contentPages/paymentDetails/PaymentDetails'
 import NeighborsDetails from '../../contentPages/neighborsDetails/NeighborsDetails'
 import NeighborsMessages from '../../contentPages/neighborsMessages/NeighborsMessages'
 import NewMessage from '../../contentPages/newMessage/NewMessage'
+import DeleteMessage from '../../contentPages/deleteMessages/DeleteMessage'
 export default function Content() {
 
 
@@ -27,6 +28,7 @@ export default function Content() {
             <Route path='/paymentDetails' element={<PaymentDetails />}></Route>
             <Route path='/neighborsDetails' element={<NeighborsDetails />}></Route>
             <Route path='/newMessage' element={<NewMessage/>}></Route>
+            <Route path='/deleteMessage' element={<DeleteMessage/>}></Route>
           </Routes>
 
         </p>

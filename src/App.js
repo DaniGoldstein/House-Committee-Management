@@ -1,4 +1,4 @@
-import { Route, Routes} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { useState, useEffect } from 'react';
 // import axios from 'axios';
@@ -37,11 +37,11 @@ function App() {
 
   return (
     <div>
-        <Routes>
-        <Route path='/homePortal' element={<Login/>}></Route>
-          <Route path='/homePortal/*' element={<Layout />}></Route>
-        </Routes>
-    
+      <Routes>
+        <Route path='/homePortal/login' element={<Login />}></Route>
+        <Route path='/homePortal/*' element={<Layout />}></Route>
+      </Routes>
+
     </div>
   );
 }

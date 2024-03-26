@@ -1,4 +1,4 @@
-import {useEffect,useState} from 'react'
+import { useEffect, useState } from 'react'
 import allBuildingContext from '../BuildingContext';
 import axios from 'axios';
 import Cookies from 'js-cookie';
@@ -20,7 +20,7 @@ function Layout() {
     const fetchData = async () => {
       console.log(Cookies.get('token'));
       try {
-        const response = await axios.get('http://localhost:3535/building/neighborsDetails', {
+        const response = await axios.get('http://localhost:3535/homePortal/neighborsDetails', {
           headers: { authtoken: Cookies.get('Token') }
 
         });
@@ -39,12 +39,12 @@ function Layout() {
 
 
   return (
-    
+
     <>
-    <allBuildingContext.Provider value={{ allBuildingDetails, setAllBuildingDetails }}>
-      <Header />
-      <Content />
-      <Navbar/>
+      <allBuildingContext.Provider value={{ allBuildingDetails, setAllBuildingDetails }}>
+        <Header />
+        <Content />
+        <Navbar />
       </allBuildingContext.Provider>
     </>
   )
