@@ -15,9 +15,8 @@ function Layout() {
 
 
   const [allBuildingDetails, setAllBuildingDetails] = useState();
-
-  useEffect(() => {
-    const fetchData = async () => {
+ 
+  const fetchAllData = async () => {
       console.log(Cookies.get('token'));
       try {
         const response = await axios.get('http://localhost:3535/homePortal/neighborsDetails', {
@@ -33,7 +32,11 @@ function Layout() {
       }
     };
 
-    fetchData();
+
+  useEffect(() => {
+   
+
+    fetchAllData();
 
   }, []);
 
@@ -41,7 +44,7 @@ function Layout() {
   return (
 
     <>
-      <allBuildingContext.Provider value={{ allBuildingDetails, setAllBuildingDetails }}>
+      <allBuildingContext.Provider value={{ allBuildingDetails, setAllBuildingDetails, fetchAllData }}>
         <Header />
         <Content />
         <Navbar />

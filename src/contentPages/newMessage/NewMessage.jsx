@@ -1,3 +1,5 @@
+import { useContext, useEffect, useState } from 'react';
+import allBuildingContext from '../../BuildingContext';
 
 import * as React from 'react';
 import Button from '@mui/material/Button';
@@ -12,6 +14,7 @@ import Cookies from 'js-cookie';
 export default function NewMessage () {
   const [open, setOpen] = React.useState(false);
   const [inputErrors, setInputErrors] = React.useState();
+  const { allBuildingDetails, setAllBuildingDetails, fetchAllData } = useContext(allBuildingContext);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -53,10 +56,12 @@ export default function NewMessage () {
       return;};
     
     try{
-       let result=axios.post('http://localhost:3535/building/neighborMessage',
+       let result = await axios.post('http://localhost:3535/homePortal/neighborMessage',
        {title:message.substring(0,150)},
-       {headers:{ authtoken: Cookies.get('Token')}});console.log(result.data);}
-
+       {headers:{ authtoken: Cookies.get('Token')}})
+       ;console.log(result.data);
+        fetchAllData();
+      }
    catch(err){console.log(err);}
   }
     return (
