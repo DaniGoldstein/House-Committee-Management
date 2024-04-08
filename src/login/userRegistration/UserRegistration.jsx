@@ -7,83 +7,6 @@ export default function UserRegistration() {
 
     useEffect(() => {
         fetchCities();
-        const api_url = "https://data.gov.il/api/3/action/datastore_search";
-        // Cities endpoint
-        const cities_resource_id = "5c78e9fa-c2e2-4771-93ff-7f400a12f7ba";
-        // Streets endpoint
-        const streets_resource_id = "a7296d1a-f8c9-4b70-96c2-6ebb4352f8e3";
-        // Field names
-        const city_name_key = "שם_ישוב";
-        const street_name_key = "שם_רחוב";
-        // dataset ids
-        const cities_data_id = "cities-data";
-        const streets_data_id = "streets-data";
-        // input elements
-        const cities_input = document.getElementById("city-choice");
-        const streets_input = document.getElementById("street-choice");
-
-        /**
-         * Get data from gov data API
-         * Uses Axios just because it was easy
-         */
-        const getData = (resource_id, q = "", limit = "100") => {
-            //console.log("sending", resource_id, query);
-            return axios.get(api_url, {
-                params: { resource_id, q, limit },
-                responseType: "json"
-            });
-        };
-
-        /**
-         * Parse records from data into 'option' elements,
-         * use data from key 'field_name' as the option value
-         */
-        const parseResponse = (records = [], field_name) => {
-            const parsed =
-                records
-                    .map((record) => `<option value="${record[field_name].trim()}">`)
-                    .join("\n") || "";
-            //console.log("parsed", field_name, parsed);
-            return Promise.resolve(parsed);
-        };
-
-        /**
-         * Fetch data, parse, and populate Datalist
-         */
-        const populateDataList = (id, resource_id, field_name, query, limit) => {
-            const datalist_element = document.getElementById(id);
-            if (!datalist_element) {
-                console.log(
-                    "Datalist with id",
-                    id,
-                    "doesn't exist in the document, aborting"
-                );
-                return;
-            }
-            getData(resource_id, query, limit)
-                .then((response) =>
-                    parseResponse(response?.data?.result?.records, field_name)
-                )
-                .then((html) => (datalist_element.innerHTML = html))
-                .catch((error) => {
-                    console.log("Couldn't get list for", id, "query:", query, error);
-                });
-        };
-
-        // ---- APP ----
-
-        /**
-         * Populate cities.
-         * There are about 1300 cities in Israel, and the API upper limit is 32000
-         * so we can safely populate the list only once.
-         */
-        populateDataList(
-            cities_data_id,
-            cities_resource_id,
-            city_name_key,
-            undefined,
-            32000
-        );
     }, [])
     const fetchCities = async () => {
 
@@ -94,15 +17,52 @@ export default function UserRegistration() {
         setCities(result);
     }
     const [cities, setCities] = useState()
-    const formValues = {};
+
+    const [formValues, setFormValues] = useState({
+        firstName: "",
+        lastName: "",
+        password: "",
+        city: "",
+        street: "",
+        buildingPassword:""
+    })
+    const [formErrors, setFormErrors] = useState({
+
+    });
 
     const handelChange = (e) => {
+        setFormErrors({})
         const { name, value } = e.target
-        formValues[name] = value;
+        setFormValues({ ...formValues, [name]: value });
         console.log(formValues);
     }
+
     const handleSubmit = (e) => {
         e.preventDefault();
+       
+        const errors = {};
+
+        Object.keys(formValues).forEach((key) => {
+
+            if (formValues[key].length === 0) {
+                errors[key] = "שדה חובה";
+
+            }
+            else if(key=="password" && formValues[key].length<4){
+                errors[key] = " סיסמא קצרה מידי";
+            }
+             setFormErrors(errors);
+        });
+
+       if (Object.keys(formValues).length>0) return;
+
+       sendFormValues();
+
+
+    }
+
+    const sendFormValues = ()=>{
+const response = axios.get()
 
     }
 
@@ -117,7 +77,7 @@ export default function UserRegistration() {
             <div class="bg-white p-8 rounded shadow-md max-w-md w-full mx-auto mx-[max(20vw,12px)]">
                 <h2 class="text-2xl font-semibold mb-4">טופס הצטרפות לבניין קיים</h2>
 
-                <form class="w-full max-w-lg">
+                <form onSubmit={handleSubmit} class="w-full max-w-lg">
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-gray-700 text-base font-bold mb-2" for="grid-first-name">
@@ -125,20 +85,21 @@ export default function UserRegistration() {
                             </label>
                             <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                 id="grid-first-name"
-                                type="text"
-                                placeholder="Jane"
-                                name='first-name'
+                                name='firstName'
                                 onChange={handelChange} />
+                                <p>{formErrors.firstName}</p>
                         </div>
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-gray-700 text-base font-bold mb-2" for="grid-last-name">
                                 שם משפחה
                             </label>
+
                             <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                 id="grid-first-name"
                                 type="text"
-                                name='last-name'
+                                name='lastName'
                                 onChange={handelChange} />
+                            <p>{formErrors.lastName}</p>
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -146,64 +107,66 @@ export default function UserRegistration() {
                             <label class="block uppercase tracking-wide text-gray-700 text-base font-bold mb-2" for="grid-password">
                                 סיסמא
                             </label>
+                            <p>{formErrors.password}</p>
                             <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 id="grid-password"
                                 type="password"
-                                placeholder="******************"
+                                placeholder="*****"
                                 name='password'
                                 onChange={handelChange} />
                             <p class="text-gray-600 text-xs italic">בחר סיסמא עם 4 תווים לפחות</p>
                         </div>
                     </div>
-
                     <div class="flex flex-wrap -mx-3 mb-2">
-
                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-
-                            <div class="relative" id="city-selection">
-                                <label class="block uppercase tracking-wide text-gray-700 text-base font-bold mb-2" for="city-choice">בחר עיר:</label>
-                                <input class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-
-                                    list="cities-data" id="city-choice" name="city-choice" />
-                                <datalist id="cities-data">
-                                    <option value="">טוען רשימת ערים...</option>
-                                </datalist>
-                            </div>
-
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                            </div>
-
-
-                        </div>
-                        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-
-                            <div class="relative" id="street-selection">
-                                <label class="block uppercase tracking-wide text-gray-700 text-base font-bold mb-2" for="street-choice">בחר עיר:</label>
-                                <input class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-
-                                    list="streets-data" id="street-choice" name="street-choice" />
-                                <datalist id="streets-data">
-                                    <option value="">טוען רחובות...</option>
-                                </datalist>
-                            </div>
-
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                            </div>
-                        </div>
-
-
-                        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                            <label class="block uppercase tracking-wide text-gray-700 text-base font-bold mb-2" for="grid-zip">
-                                מיקוד
+                            <label class="block uppercase tracking-wide text-gray-700 text-base font-bold mb-2" for="grid-state">
+                                עיר
                             </label>
+
+                            <div class="relative">
+                                <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="grid-state"
+                                    name='city'
+                                    onChange={handelChange}>{
+                                        cities && cities.map((city) => <option>{city}</option>)
+                                    }
+
+                                </select>
+                                <p>{formErrors.city}</p>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                            <label class="block uppercase tracking-wide text-gray-700 text-base font-bold mb-2" for="grid-city">
+                                רחוב
+                            </label>
+
                             <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-zip"
+                                id="grid-city"
                                 type="text"
-                                placeholder="90210" />
+                                name='street'
+                                onChange={handelChange} />
+                            <p>{formErrors.street}</p>
+                        </div>
+
+                        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                            <label class="block uppercase tracking-wide text-gray-700 text-base font-bold mb-2" for="grid-city">
+                               סיסמת בניין
+                            </label>
+
+                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="grid-city"
+                                type="text"
+                                name='buildingPassword'
+                                onChange={handelChange} />
+                            <p>{formErrors.buildingPassword}</p>
                         </div>
                     </div>
+                    <button type='submit' class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                        שלח
+                    </button>
                 </form>
             </div>
         </body>)

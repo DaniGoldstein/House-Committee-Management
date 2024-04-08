@@ -9,30 +9,6 @@ import Layout from './layout';
 
 function App() {
 
-
-  // const [allBuildingDetails, setAllBuildingDetails] = useState();
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     console.log(Cookies.get('token'));
-  //     try {
-  //       const response = await axios.get('http://localhost:3535/building/neighborsDetails', {
-  //         headers: { authtoken: Cookies.get('token') }
-
-  //       });
-
-
-  //       setAllBuildingDetails(response.data);
-  //       console.log(response.data, "from App",);
-  //     } catch (error) {
-  //       console.error("Error fetching neighbors details:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-
-  // }, []);
-
   return (
     <div>
       <Routes>

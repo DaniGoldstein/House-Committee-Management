@@ -66,7 +66,7 @@ export default function Login() {
 
     try {
 
-      let response = await axios.post('http://localhost:3535/login', {}, {
+      let response = await axios.post('http://localhost:3535/homePortal/registration/login', {}, {
         headers: {
           username: formValues.userName,
           password: formValues.password
@@ -81,7 +81,9 @@ export default function Login() {
 
     }
     catch (err) {
-      console.log("IncorrectDetails"); setFormErrors({ IncorrectDetails: "אחד הפרטים שגויים" })
+      console.log("IncorrectDetails");
+      console.log(err);
+      err.response.status === 404 && setFormErrors({ IncorrectDetails: "אחד הפרטים שגויים" })
       console.log(err);
 
     }
