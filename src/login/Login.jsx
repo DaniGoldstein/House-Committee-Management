@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useNavigate ,Link } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import style from './style.module.css';
 import axios from 'axios';
 import Cookies from 'js-cookie';
@@ -92,7 +92,7 @@ export default function Login() {
   return (
 
     <div className={style.loginContainer}>
-      
+
 
       <div
         class="container max-w-md mx-auto  xl:max-w-1xl h-4/6 flex bg-white rounded-lg shadow overflow-hidden opacity-95"
@@ -103,19 +103,19 @@ export default function Login() {
         <div class="w-full  p-8">
           <form onSubmit={handleSubmit}>
             <h1 class=" text-2xl font-semibold">כניסה לחשבונך</h1>
-            <br/>
+            <br />
             <div>
               <span class="text-gray-600 text-base">
                 רוצה להצטרף לבניין קיים ?       </span>
               <span class="text-gray-700 text-sm font-semibold">
-               <Link to={'/homePortal/signUp'}> הצטרף </Link> 
+                <Link to={'/homePortal/signUp'}> הצטרף </Link>
               </span>
             </div>
             <div>
               <span class="text-gray-600 text-base">
                 רוצה לרשום את הבניין שלך לפורטל הבית?       </span>
               <span class="text-gray-700 text-sm font-semibold">
-                להרשמה
+                <Link to={'/homePortal/signBuilding'}> להרשמה </Link>
               </span>
             </div>
             <div class="mb-4 mt-6">
