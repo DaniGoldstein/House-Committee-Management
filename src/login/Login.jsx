@@ -21,6 +21,7 @@ export default function Login() {
   }
   const [formValues, setFormValues] = useState(sendValue);
   const [formErrors, setFormErrors] = useState({});
+  const [admin, setAdmin] = useState(false)
 
   const handleChange = (e) => {
     setFormErrors({})
@@ -30,7 +31,7 @@ export default function Login() {
 
   }
   const handleSubmit = (e) => {
-
+    console.log(formValues, "from submit");
     e.preventDefault();
 
     setFormErrors(validate(formValues));
@@ -44,7 +45,8 @@ export default function Login() {
     const errors = {};
 
     if (value.userName.length > 0 && value.password.length >= 4) {
-      send();
+
+      !admin ? sendUser() :sendAdmin();
     }
     else {
       if (value.userName == 0) {
@@ -61,7 +63,7 @@ export default function Login() {
     return errors
   }
 
-  const send = async () => {
+  const sendUser = async () => {
     console.log(formValues);
 
     try {
@@ -72,7 +74,7 @@ export default function Login() {
           password: formValues.password
         }
       })
-      const token = 'Bearer ' + response.data['accessToken'];
+      const token = await 'Bearer ' + response.data['accessToken'];
       console.log(token);
       if (token) {
         Cookies.set('Token', token);
@@ -83,11 +85,15 @@ export default function Login() {
     catch (err) {
       console.log("IncorrectDetails");
       console.log(err);
-      err.response.status === 404 && setFormErrors({ IncorrectDetails: "אחד הפרטים שגויים" })
+      err.response && err.response.status === 404 &&
+        setFormErrors({ IncorrectDetails: "אחד הפרטים שגויים" })
       console.log(err);
 
     }
   }
+  const sendAdmin=()=>{
+    setAdmin(false)
+  };
 
   return (
 
@@ -159,10 +165,24 @@ export default function Login() {
             <div class="flex w-full mt-8">
               <button
                 class="w-full bg-gray-800 hover:bg-grey-900 text-white text-sm py-2 px-4 font-semibold rounded focus:outline-none focus:shadow-outline h-10"
-                type="submit">
+                type="submit"
+                name='user'>
 
                 כניסה
               </button>
+
+            </div>
+
+            <div class="flex w-full mt-8">
+              <button
+                onClick={() => { setAdmin(true); }}
+                class="w-full bg-gray-800 hover:bg-grey-900 text-white text-sm py-2 px-4 font-semibold rounded focus:outline-none focus:shadow-outline h-10"
+                type="submit"
+                name='admin'>
+
+                כניסת מנהל
+              </button>
+
             </div>
           </form>
         </div>

@@ -12,7 +12,11 @@ export default function MainMessages() {
 
   const [messages, setMessages] = useState('');
 
-  useEffect(() => { setMessages(allBuildingDetails.generalMessages); }, [allBuildingContext])
+  useEffect(() => {
+    console.log("messages");
+    allBuildingDetails && setMessages(allBuildingDetails.generalMessages);
+   
+  },[])
 
 
 
@@ -23,6 +27,7 @@ export default function MainMessages() {
   return (
 
     <div>
+            <h1 class=" text-2xl font-semibold"> הודעות וועד הבית</h1>
       {messages.length == 0 ? "אין הודעות" :
         <Table3columns th2={"הודעה"} th3={"תאריך"} arrContent={messages} />
       }

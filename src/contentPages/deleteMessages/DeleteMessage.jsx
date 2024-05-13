@@ -19,7 +19,7 @@ export default function DeleteMessage() {
   useEffect(() => {
     console.log("use effect called");
     const filterUserMessages = allBuildingDetails &&
-    allBuildingDetails.neighborsMessages.filter((message, key) => { return message.username === allBuildingDetails.userName })
+      allBuildingDetails.neighborsMessages.filter((message, key) => { return message.username === allBuildingDetails.userName })
 
     setNeighborsMessages(filterUserMessages)
 
@@ -50,7 +50,7 @@ export default function DeleteMessage() {
   const sendDeletes = async (messages) => {
     try {
       console.log(messages);
-     const result = await axios.delete(`http://localhost:3535/homePortal/deleteMessages/${allBuildingDetails.userName}`,
+      const result = await axios.delete(`http://localhost:3535/homePortal/deleteMessages/${allBuildingDetails.userName}`,
         {
           headers: { authtoken: Cookies.get('Token') },
           data: { messagesId: messages }
@@ -71,8 +71,13 @@ export default function DeleteMessage() {
 
   return (
     <div className={style.formContainer}>
-      <h2>בחר הודעות למחיקה</h2>
-      <form
+
+      {neighborMessages && neighborMessages.length > 0 ?
+        <h1 class=" text-2xl font-semibold">   בחר הודעות למחיקה</h1>
+        : <h1 class=" text-2xl font-semibold">   אין לך הודעות</h1>
+
+      }  <br></br> 
+         <form
         onSubmit={handleSubmit}
       >
         {neighborMessages && neighborMessages.map((message, key) =>
@@ -86,8 +91,8 @@ export default function DeleteMessage() {
           </label>
         )}
 
-        <button type="submit">מחק</button>
-      </form>
+        {neighborMessages && neighborMessages.length > 0 && <button type="submit">מחק</button>
+        }      </form>
     </div>
   )
 }

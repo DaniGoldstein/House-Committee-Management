@@ -15,7 +15,7 @@ export default function Navbar() {
     <div className={style.sidebar}>
       <ul>
         <li>
-          <Link to="messages" className={style.mainSidebar}>הודעות    ועד-הבית</Link>
+          <Link to="" className={style.mainSidebar}>הודעות    ועד-הבית</Link>
         </li>
         <li>
           <Link to="neighborsMessages" className={style.mainSidebar}>הודעות דיירים</Link>

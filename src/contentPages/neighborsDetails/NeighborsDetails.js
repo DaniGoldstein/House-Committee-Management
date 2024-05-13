@@ -1,6 +1,6 @@
 
 import style from './style.module.css';
-import { useState, useEffect,useContext,createContext } from 'react';
+import { useState, useEffect, useContext, createContext } from 'react';
 import Table3columns from '../../components/all/table/Table3columns';
 import allBuildingContext from '../../BuildingContext'
 
@@ -14,16 +14,16 @@ import allBuildingContext from '../../BuildingContext'
 
 export default function NeighborsDetails() {
 
-  
-const {allBuildingDetails} = useContext(allBuildingContext);
-console.log(allBuildingDetails,"Building");
+
+  const { allBuildingDetails } = useContext(allBuildingContext);
+  console.log(allBuildingDetails, "Building");
 
   const [neighborsDetails, setNeighborsDetails] = useState();
 
 
   useEffect(() => {
-    allBuildingDetails && setNeighborsDetails(allBuildingDetails.neighbors);  
-   
+    allBuildingDetails && setNeighborsDetails(allBuildingDetails.neighbors);
+
   }, [allBuildingDetails]);
 
 
@@ -31,8 +31,10 @@ console.log(allBuildingDetails,"Building");
 
   return (
     <div >
+      <h1 class=" text-2xl font-semibold">   פרטי דיירים</h1>
+
       <Table3columns th1={"שם"} th2={"טלפון"} th3={"אמייל"}
-       arrContent={ neighborsDetails}/>
+        arrContent={neighborsDetails} />
     </div>
   );
 }

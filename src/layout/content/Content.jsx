@@ -19,11 +19,11 @@ export default function Content() {
 
 
     <div className={style.contentContainer}>
-      <div className={style.contentBox}>
+       <div className={style.contentBox}>
 
-        <p className={style.contentText}>
+       <p className={style.contentText}> 
           <Routes>
-            <Route path='/messages' element={<MainMessages />}>   </Route>
+            <Route path='/' element={<MainMessages />}>   </Route>
             <Route path='/neighborsMessages' element={<NeighborsMessages />}>   </Route>
             <Route path='/paymentDetails' element={<PaymentDetails />}></Route>
             <Route path='/neighborsDetails' element={<NeighborsDetails />}></Route>
@@ -32,7 +32,7 @@ export default function Content() {
           </Routes>
 
         </p>
-      </div>
+       </div> 
     </div>
   </>
   )

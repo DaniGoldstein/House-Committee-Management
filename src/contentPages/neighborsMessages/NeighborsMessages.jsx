@@ -22,6 +22,8 @@ const {allBuildingDetails,setAllBuildingDetails} = useContext(allBuildingContext
   }, [allBuildingDetails]);
     return (
         <div>
+                      <h1 class=" text-2xl font-semibold">   הודעות שכנים</h1>
+
             <Table3columns th1={"שם"} th2={"הודעה"} th3={"תאריך"} arrContent={neighborsMessages}/>
            
         </div>
