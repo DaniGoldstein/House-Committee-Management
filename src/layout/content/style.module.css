@@ -2,7 +2,8 @@
 
 .contentContainer {
   margin: 250px;
-  margin-top: 200px;
+  margin-bottom: auto;
+  margin-top: 10%;
   padding: 20px;
   transition: margin-left 0.3s ease;
   
@@ -18,7 +19,7 @@
 
 
 .contentBox {overflow: auto;
-  height: 400px;
+  height: 600px;
   border: 1px solid #ddd;
   background-color: #f9f9f9; 
   padding: 20px;

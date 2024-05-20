@@ -27,10 +27,7 @@ export default function DeleteMessage() {
     console.log(neighborMessages);
   }, [allBuildingDetails]);
 
-  //   const handleDeleteMessage=(e) => {
-  // messagesToDelete.push(e.target.value);
-  // console.log(e.target.value);
-  //   }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,7 +37,7 @@ export default function DeleteMessage() {
       values.push(pair[1]);
     }
     console.log('Form values:', values);
-    await sendDeletes(values);
+    const deletes = await sendDeletes(values);
     fetchAllData();
     console.log(allBuildingDetails);
 
@@ -55,14 +52,14 @@ export default function DeleteMessage() {
           headers: { authtoken: Cookies.get('Token') },
           data: { messagesId: messages }
         })
-
+return result.data;
     }
 
 
     catch (error) {
       console.error("Error fetching neighbors details:", error);
     }
-
+    
 
   }
 
@@ -76,8 +73,8 @@ export default function DeleteMessage() {
         <h1 class=" text-2xl font-semibold">   בחר הודעות למחיקה</h1>
         : <h1 class=" text-2xl font-semibold">   אין לך הודעות</h1>
 
-      }  <br></br> 
-         <form
+      }  <br></br>
+      <form
         onSubmit={handleSubmit}
       >
         {neighborMessages && neighborMessages.map((message, key) =>

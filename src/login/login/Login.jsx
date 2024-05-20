@@ -4,7 +4,6 @@ import { useNavigate, Link } from "react-router-dom"
 import style from './style.module.css';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import UserRegistration from './userRegistration/UserRegistration';
 
 
 
@@ -46,7 +45,7 @@ export default function Login() {
 
     if (value.userName.length > 0 && value.password.length >= 4) {
 
-      !admin ? sendUser() :sendAdmin();
+      !admin ? sendUser() : sendAdmin();
     }
     else {
       if (value.userName == 0) {
@@ -68,13 +67,11 @@ export default function Login() {
 
     try {
 
-      let response = await axios.post('http://localhost:3535/homePortal/registration/login', {}, {
-        headers: {
-          username: formValues.userName,
-          password: formValues.password
-        }
+      let response = await axios.post('http://localhost:3535/homePortal/registration/userLogin', {
+        userName: formValues.userName,
+        password: formValues.password
       })
-      const token = await 'Bearer ' + response.data['accessToken'];
+      const token = 'Bearer ' + response.data['accessToken'];
       console.log(token);
       if (token) {
         Cookies.set('Token', token);
@@ -91,9 +88,24 @@ export default function Login() {
 
     }
   }
-  const sendAdmin=()=>{
-    setAdmin(false)
-  };
+  const sendAdmin = async () => {
+    setAdmin(false);
+    try {
+      const response = await axios.post('http://localhost:3535/homePortal/registration/adminLogin',
+        {
+          userName: formValues.userName,
+          password: formValues.password
+        })
+        const token = 'Bearer ' + response.data['accessToken'];
+      console.log(token);
+      if (token) {
+        Cookies.set('Token', token);
+        navigate("/adminPage");
+      }
+    }
+
+    catch (err) { setFormErrors({ IncorrectDetails: "אחד הפרטים שגויים" }) }
+  }
 
   return (
 
