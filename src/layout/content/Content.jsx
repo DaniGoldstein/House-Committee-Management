@@ -9,17 +9,7 @@ import NewMessage from '../../contentPages/newMessage/NewMessage'
 import DeleteMessage from '../../contentPages/deleteMessages/DeleteMessage'
 export default function Content() {
 
-<<<<<<< HEAD
-          <div className={style.contentContainer}>
-      <div className={style.contentBox}>
-       <h1>test branch</h1>
-        <p className={style.contentText}>
-        <Routes>
-<Route path='homePortal/messages' element={<Messages/>}>   </Route>
-<Route path='homePortal/neighborsMessages' element={<NeighborsMessages/>}>   </Route>
-<Route path='homePortal/paymentDetails' element={<PaymentDetails/> }></Route>
-/* <Route path='homePortal/neighborsDetails' element={<NeighborsDetails/> }></Route> */
-=======
+
 
 
 
@@ -40,7 +30,6 @@ export default function Content() {
             <Route path='/neighborsDetails' element={<NeighborsDetails />}></Route>
             <Route path='/newMessage' element={<NewMessage/>}></Route>
             <Route path='/deleteMessage' element={<DeleteMessage/>}></Route>
->>>>>>> 0d7517a62f32b871079dac9e195e225e640e0ae4
           </Routes>
 
         </p>

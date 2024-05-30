@@ -5,6 +5,7 @@ import UserRegistration from './login/userRegistration/UserRegistration';
 import BuildingRegistration from './login/buildingRegistration/BuildingRegistration';
 import Login from './login/login/Login';
 import Layout from './layout';
+import AdminLayout from './admin/adminLayout/AdminLayuot.jsx';
 
 
 
@@ -17,6 +18,7 @@ function App() {
         <Route path='/homePortal/signUp' element={<UserRegistration />}></Route>
         <Route path='/homePortal/signBuilding' element={<BuildingRegistration />}></Route>
         <Route path='/homePortal/*' element={<Layout />}></Route>
+        <Route path='/adminPage' element={<AdminLayout/>}></Route>
       </Routes>
 
     </div>

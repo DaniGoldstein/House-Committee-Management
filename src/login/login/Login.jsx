@@ -84,11 +84,14 @@ export default function Login() {
       console.log(err);
       err.response && err.response.status === 404 &&
         setFormErrors({ IncorrectDetails: "אחד הפרטים שגויים" })
-      console.log(err);
+        err.code && err.code === "ERR_NETWORK" &&
+        setFormErrors({ IncorrectDetails: "בדוק חיבור רשת" })
+      
 
     }
   }
   const sendAdmin = async () => {
+    navigate("/adminPage");
     setAdmin(false);
     try {
       const response = await axios.post('http://localhost:3535/homePortal/registration/adminLogin',
@@ -104,7 +107,8 @@ export default function Login() {
       }
     }
 
-    catch (err) { setFormErrors({ IncorrectDetails: "אחד הפרטים שגויים" }) }
+    catch (err) {     err.code && err.code === "ERR_NETWORK" &&
+    setFormErrors({ IncorrectDetails: "בדוק חיבור רשת" }) }
   }
 
   return (
@@ -115,10 +119,8 @@ export default function Login() {
       <div
         class="container max-w-md mx-auto  xl:max-w-1xl h-4/6 flex bg-white rounded-lg shadow overflow-hidden opacity-95"
       >
-        {/* <div class="relative hidden xl:block xl:w-1/2 h-full">
-   
-  </div> */}
-        <div class="w-full  p-8">
+    
+        <div class="w-full  p-8 ">
           <form onSubmit={handleSubmit}>
             <h1 class=" text-2xl font-semibold">כניסה לחשבונך</h1>
             <br />
@@ -175,7 +177,13 @@ export default function Login() {
               <p>{formErrors.IncorrectDetails}</p>
             </div>
             <div class="flex w-full mt-8">
+             
+
+            </div>
+            <div class="flex w-full mt-8">
+              
               <button
+                // onClick={() => { setAdmin(true); }}
                 class="w-full bg-gray-800 hover:bg-grey-900 text-white text-sm py-2 px-4 font-semibold rounded focus:outline-none focus:shadow-outline h-10"
                 type="submit"
                 name='user'>
@@ -184,8 +192,8 @@ export default function Login() {
               </button>
 
             </div>
-
             <div class="flex w-full mt-8">
+              
               <button
                 onClick={() => { setAdmin(true); }}
                 class="w-full bg-gray-800 hover:bg-grey-900 text-white text-sm py-2 px-4 font-semibold rounded focus:outline-none focus:shadow-outline h-10"
