@@ -18,7 +18,7 @@ function App() {
         <Route path='/homePortal/signUp' element={<UserRegistration />}></Route>
         <Route path='/homePortal/signBuilding' element={<BuildingRegistration />}></Route>
         <Route path='/homePortal/*' element={<Layout />}></Route>
-        <Route path='/adminPage' element={<AdminLayout/>}></Route>
+        <Route path='/adminPage/*' element={<AdminLayout/>}></Route>
       </Routes>
 
     </div>

@@ -1,7 +1,7 @@
 
 // import './message.css';
-import Table3columns from '../../components/all/table/Table3columns';
-import Message from '../../components/all/table/message/Message';
+import Table3columns from '../../components/table/Table3columns';
+import Message from '../../components/message/Message';
 import allBuildingContext from '../../BuildingContext';
 import { useContext,useState,useEffect } from 'react';
 
@@ -28,7 +28,7 @@ const {allBuildingDetails,setAllBuildingDetails} = useContext(allBuildingContext
             {/* <Table3columns th1={"שם"} th2={"הודעה"} th3={"תאריך"} arrContent={neighborsMessages}/> */}
       
     {neighborsMessages&&neighborsMessages.length>0 ? neighborsMessages.map((message)=>
-    <div><Message name={message.name} date={message.date} title={message.title}></Message> <br></br></div>
+    <div><Message name={message.name} date={message.date} content={message.title}></Message> <br></br></div>
     ):
     <p>אין הודעות</p>}
            

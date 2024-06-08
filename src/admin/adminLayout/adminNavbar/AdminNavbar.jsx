@@ -7,7 +7,7 @@ export default function AdminNavbar() {
     <div className={style.sidebar}>
     <ul>
       <li>
-        <Link to="" className={style.mainSidebar}>צור הודעת ועד-הבית</Link>
+        <Link to="newMainMessage" className={style.mainSidebar}>צור הודעת ועד-הבית</Link>
       </li>
       <li>
         <Link to="neighborsMessages" className={style.mainSidebar}>מחק הודעות וועד בית </Link>
