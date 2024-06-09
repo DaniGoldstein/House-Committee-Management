@@ -10,12 +10,6 @@ import DeleteMessage from '../../contentPages/deleteMessages/DeleteMessage'
 export default function Content() {
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 0e2e7cdc8156bb1f48e7d2dbaa53651a33c7a9a3
-
-
 
 
   return (<>

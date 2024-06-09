@@ -1,9 +1,9 @@
 import React from 'react'
-import PopupMessag from '../../../components/popupMessag/PopupMessag.jsx'
+import PopupMessage from '../../../components/popupMessage/PopupMessage.jsx'
 function NewMainMessage() {
   return (
     <div>
-      <PopupMessag permition={"admin"}/>
+      <PopupMessage permission={"admin"}/>
     </div>
   )
 }
