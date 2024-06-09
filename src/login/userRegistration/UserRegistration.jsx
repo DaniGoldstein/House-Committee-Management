@@ -41,7 +41,7 @@ const nav = useNavigate();
   const handelChange = (e) => {
     setFormErrors({})
     const { name, value } = e.target
-    setFormValues({ ...formValues, [name]: value });
+    name!="entrance" && setFormValues({ ...formValues, [name]: value }); //שדה כניסת בית אינו שדה חובה
     console.log(formValues);
   }
 
@@ -76,7 +76,7 @@ const nav = useNavigate();
       const response =await axios.post('http://localhost:3535/homePortal/registration/UserRegistration',
         { ...formValues }
       )
-      if (response.status==201)nav('/homePortal/login');
+      if (response.status==201)nav('/');
       
       
     }

@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 
 import allBuildingContext from '../../BuildingContext';
-import Table3columns from '../../components/all/table/Table3columns';
+import Table3columns from '../../components/table/Table3columns';
 
 
 

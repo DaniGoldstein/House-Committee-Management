@@ -7,7 +7,7 @@ export default function BuildingRegistration() {
   const nav = useNavigate();
 
   const [formValues, setFormValues] = useState({
-    
+
     city: "",
     street: "",
     houseNumber: "",
@@ -15,7 +15,7 @@ export default function BuildingRegistration() {
   })
   const [formErrors, setFormErrors] = useState({});
 
- 
+
 
   const handelChange = (e) => {
     setFormErrors({})
@@ -35,9 +35,9 @@ export default function BuildingRegistration() {
         errors[key] = "שדה חובה";
 
       }
-      // else if (key == "buildingPassword" && formValues[key].length < 4) {
-      //   errors[key] = " סיסמא קצרה מידי";
-      // }
+      else if (key == "buildingPassword" && formValues[key].length < 4) {
+        errors[key] = " סיסמא קצרה מידי";
+      }
       setFormErrors(errors);
     });
 
@@ -56,13 +56,15 @@ export default function BuildingRegistration() {
         { ...formValues }
       )
       console.log(response);
-      if (response.status == 201) nav('/homePortal/login');
+      
+      if (response.status == 201) nav('/');
 
 
     }
     catch (err) {
       console.log(err);
       if (err.response.status == 409) setFormErrors({ ...formErrors, ['badRequest']: " הבניין כבר רשום במערכת" })
+      else if (err.code && err.code === "ERR_NETWORK") setFormErrors({ IncorrectDetails: "בדוק חיבור רשת" })
       else { setFormErrors({ ...formErrors, ['badRequest']: "הזנת נתונים שגויים" }) }
     }
 
@@ -138,7 +140,7 @@ export default function BuildingRegistration() {
                 type="text"
                 name='entrance'
                 onChange={handelChange} />
-              
+
             </div>
 
           </div>
