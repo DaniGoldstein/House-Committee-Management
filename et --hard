@@ -1,0 +1,189 @@
+[33mcommit 658d2eb804c9e221e7233d5ff0aad0c1e87eb878[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Merge: 570a392 f70760a
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Mon May 20 16:45:24 2024 +0300
+
+    Merge branch 'master' of https://github.com/DaniGoldstein/House-Committee-Management
+
+[33mcommit 570a3923f33346ebfa6d483c947983caa0c3d5ad[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Mon May 20 16:44:41 2024 +0300
+
+    registrations3
+
+[33mcommit f70760a97c89b33bea0df147ecdd33047040b92d[m[33m ([m[1;31mmain/master[m[33m)[m
+Merge: 24a5d7c 0d7517a
+Author: DanielGoldstein <danigold054@gmail.com>
+Date:   Mon May 13 17:46:34 2024 +0300
+
+    Merge branch 'master' of https://github.com/DaniGoldstein/House-Committee-Management
+
+[33mcommit 0d7517a62f32b871079dac9e195e225e640e0ae4[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Mon May 13 15:46:36 2024 +0300
+
+    registrations2
+
+[33mcommit 02660f7f4d21dc200279d2ab2c7e4bd5ca4f2c48[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Tue May 7 15:35:01 2024 +0300
+
+    registrations
+
+[33mcommit 39868e2aabb94b1dbb2b353dac4bc1845dde7c19[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Mon Apr 8 13:49:08 2024 +0300
+
+    a9
+
+[33mcommit 378c5afef65a344ce261a269003869f17c9ce043[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Thu Apr 4 17:03:37 2024 +0300
+
+    a9
+
+[33mcommit 80bd9b2e8aa292958f0ebc3d9ac4b13cfd808c7e[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Tue Apr 2 16:58:53 2024 +0300
+
+    a9
+
+[33mcommit e80170fd47d5412d56376719b1b4a75523b93028[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Tue Mar 26 18:04:59 2024 +0200
+
+    a9
+
+[33mcommit 1673b95eda7d58e51d65f688b6f9dbd5db50b610[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Thu Mar 7 17:44:32 2024 +0200
+
+    usenavigate
+
+[33mcommit 5f4949c32c473c705ae6d017e902ab347f2b1b11[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Wed Mar 6 17:53:55 2024 +0200
+
+    usenavigate
+
+[33mcommit bff0e0af211dd2f2f8a08ef6ee4dc96615c9092b[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Tue Mar 5 16:55:19 2024 +0200
+
+    a8
+
+[33mcommit 0b23a5847670688d1e00c6d2754c49c53a44a3f9[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Mon Mar 4 17:24:45 2024 +0200
+
+    a8
+
+[33mcommit 63cf0cf30d2aa3e7da41158da5c272bfef746b9c[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Mon Mar 4 17:23:34 2024 +0200
+
+    a8
+
+[33mcommit 8dfba0178033e1eaaa6aed89075d0b705a8ec1fa[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Sun Mar 3 12:55:32 2024 +0200
+
+    a8
+
+[33mcommit aa69988d14b0bb6f3af93435aea9bfd354f96922[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Thu Feb 22 17:38:08 2024 +0200
+
+    a8
+
+[33mcommit 4858ebf99a33ad3aa34758046689e87f155a4977[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Tue Feb 20 17:31:55 2024 +0200
+
+    a8
+
+[33mcommit f3922916e039ee11bec62e7a3e118501de8692e7[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Sun Feb 18 17:43:00 2024 +0200
+
+    a8
+
+[33mcommit 2f7d02f7e36d95b7cf12d5b7b1caa82a3760b247[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Sun Feb 18 14:25:43 2024 +0200
+
+    a8
+
+[33mcommit 40f7ad7f5d206a61da2f13d2f9f667ea8fdbd64b[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Wed Feb 14 17:42:27 2024 +0200
+
+    a8
+
+[33mcommit 1b10ff4aad93a28fea7ace71c90465ced8c63052[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Wed Feb 14 12:37:52 2024 +0200
+
+    a7
+
+[33mcommit 24a5d7ce5d31ec57b2b692def63f9d9b44c7660f[m
+Merge: f5a0a4f 56f3b3a
+Author: DanielGoldstein <danigold054@gmail.com>
+Date:   Tue Feb 13 16:12:31 2024 +0200
+
+    Merge branch 'master' of https://github.com/DaniGoldstein/House-Committee-Management
+
+[33mcommit f5a0a4febe9c69c3aba0ac698990522ba279f3c5[m
+Author: DanielGoldstein <danigold054@gmail.com>
+Date:   Tue Feb 13 16:10:03 2024 +0200
+
+    a6
+
+[33mcommit 56f3b3ade83d9f89e3ae29442c41e7d8577c7b81[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Thu Feb 8 14:04:24 2024 +0200
+
+    a5
+
+[33mcommit 971e7c898d738b320c55330193b998c0975ba5e9[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Sun Feb 4 17:51:49 2024 +0200
+
+    conect to server
+
+[33mcommit f327997a2c9827d956389ce8837b95b6df65c0c6[m
+Merge: 7bf14a5 9e8ac76
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Sun Feb 4 12:28:37 2024 +0200
+
+    Merge branch 'master' of https://github.com/DaniGoldstein/House-Committee-Management
+
+[33mcommit 7bf14a53c9dce60615d5faf3340208b7c070d3d9[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Sun Feb 4 12:28:31 2024 +0200
+
+    a
+
+[33mcommit 9e8ac7696f8b9935aada451a18c1ad1648fb4c65[m
+Author: DanielGoldstein <danigold054@gmail.com>
+Date:   Thu Feb 1 15:26:11 2024 +0200
+
+    bring back neigbors
+
+[33mcommit 41fc4da21e616cc3fa8ad15d26da7bbc9f30ed21[m
+Author: DanielGoldstein <danigold054@gmail.com>
+Date:   Thu Feb 1 15:06:38 2024 +0200
+
+    test1
+
+[33mcommit 5a474919d29419f3bc2f7cedc93a489c83bed100[m
+Author: Daniel Goldstein <danigold054@gmail.com>
+Date:   Thu Feb 1 13:16:17 2024 +0200
+
+    a1
+
+[33mcommit c56d1012f26145d5f0d5b43805cb793bd555e94b[m
+Author: danielgoldshtein <danigold054@gmail.com>
+Date:   Tue Jan 30 18:13:39 2024 +0200
+
+    model
