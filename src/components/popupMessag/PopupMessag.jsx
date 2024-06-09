@@ -11,15 +11,14 @@ import DialogTitle from '@mui/material/DialogTitle';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-export default function PopupMessag ({permition}) {
+export default function PopupMessag ({permission}) {
   const [open, setOpen] = React.useState(false);
   const [inputErrors, setInputErrors] = React.useState();
   const { allBuildingDetails, setAllBuildingDetails, fetchAllData } = useContext(allBuildingContext);
-console.log(allBuildingDetails);
+console.log(permission);
   const handleClickOpen = () => {
     setOpen(true);
   };
-console.log(permition);
 
 
   let message='';
@@ -51,20 +50,33 @@ console.log(permition);
       
     }
   }
-  
 
   async function sendMessageToServer(){
     if(message.length==0){
-      return;};
-    
-    try{
+      return};
+      console.log(permission);
+
+
+      if (permission==="admin"){
+        console.log("inAdmin");
+        try{
+          let result = await axios.post('http://localhost:3535/homePortal/adminMessage',
+          {title:message.substring(0,150)},
+          {headers:{ authtoken: Cookies.get('Token')}})
+          ;console.log(result.data);
+           fetchAllData();
+         }
+      catch(err){console.log(err);}
+      }
+    else {try{
        let result = await axios.post('http://localhost:3535/homePortal/neighborMessage',
        {title:message.substring(0,150)},
        {headers:{ authtoken: Cookies.get('Token')}})
        ;console.log(result.data);
         fetchAllData();
       }
-   catch(err){console.log(err);}
+   catch(err){console.log(err);}}
+
   }
     return (
     <React.Fragment>

@@ -2,7 +2,7 @@ import React from 'react'
 import style from './style.module.css'
 import { Route, Routes } from 'react-router'
 import NewMainMessage from '../../adminContentPages/newMainMessage/NewMainMessage'
-export default function Content() {
+export default function AdminContent() {
 
 
 
