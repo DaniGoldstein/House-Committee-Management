@@ -5,7 +5,7 @@ import UserRegistration from './login/userRegistration/UserRegistration';
 import BuildingRegistration from './login/buildingRegistration/BuildingRegistration';
 import Login from './login/login/Login';
 import Layout from './layout';
-import AdminLayout from './admin/adminLayout/AdminLayuot.jsx';
+import AdminLayout from'./admin/adminLayout'
 
 
 
