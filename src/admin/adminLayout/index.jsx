@@ -1,12 +1,12 @@
 import React from 'react';
 import AdminNavbar from './adminNavbar/AdminNavbar';
 import AdminContent from './adminContent/AdminContent';
-import allBuildingContext from '../../BuildingContext';
-import { useState,useEffect } from 'react';
+import adminContext from '../AdminContext';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-export default function AdminLayuot() {
+export default function AdminLayout() {
 
   const fetchAllData = async () => {
     console.log(Cookies.get('token'));
@@ -18,27 +18,27 @@ export default function AdminLayuot() {
 
 
       setAllBuildingDetails(response.data);
-      console.log(response.data, "from App",);
+      console.log(response.data, "from adminLayout",);
     } catch (error) {
       console.error("Error fetching neighbors details:", error);
     }
   };
 
 
-useEffect(() => {
- 
+  useEffect(() => {
 
-  fetchAllData();
 
-}, []);
+    fetchAllData();
+
+  }, []);
 
   const [allBuildingDetails, setAllBuildingDetails] = useState();
   return (
-   <>
-   <allBuildingContext.Provider value={{ allBuildingDetails, setAllBuildingDetails,fetchAllData}}>
-   <AdminNavbar/>
-   <AdminContent/>
-   </allBuildingContext.Provider>
-   </>
+    <>
+      <adminContext.Provider value={{ allBuildingDetails, setAllBuildingDetails, fetchAllData }}>
+        <AdminNavbar />
+        <AdminContent />
+      </adminContext.Provider>
+    </>
   )
 }
