@@ -26,7 +26,7 @@ function Layout() {
         });
 
 
-        setAllBuildingDetails(response.data);
+       await setAllBuildingDetails(response.data);
         console.log(response.data, "from App",);
       } catch (error) {
         console.error("Error fetching neighbors details:", error);

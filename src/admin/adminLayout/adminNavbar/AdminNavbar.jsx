@@ -10,7 +10,7 @@ export default function AdminNavbar() {
         <Link to="newMainMessage" className={style.mainSidebar}>צור הודעת ועד-הבית</Link>
       </li>
       <li>
-        <Link to="neighborsMessages" className={style.mainSidebar}>מחק הודעות וועד בית </Link>
+        <Link to="deleteMainMessage" className={style.mainSidebar}>מחק הודעות וועד בית </Link>
       </li>
     
       <li>

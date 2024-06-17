@@ -24,7 +24,7 @@ export default function DeleteMessage() {
     setNeighborsMessages(filterUserMessages)
 
 
-    console.log(neighborMessages);
+    console.log(filterUserMessages);
   }, [allBuildingDetails]);
 
 
@@ -38,7 +38,8 @@ export default function DeleteMessage() {
     }
     console.log('Form values:', values);
     const deletes = await sendDeletes(values);
-    fetchAllData();
+    console.log(deletes,"delete");
+    await fetchAllData();
     console.log(allBuildingDetails);
 
 
