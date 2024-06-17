@@ -18,7 +18,7 @@ export default function AdminContent() {
        <div className={style.contentBox}>
 
        <p className={style.contentText}> 
-          <Routes>
+          <Routes> 
             <Route path='newMainMessage' element={<NewMainMessage/>}>   </Route>
         
           </Routes>
