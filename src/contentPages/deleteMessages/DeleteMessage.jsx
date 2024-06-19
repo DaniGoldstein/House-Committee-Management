@@ -1,8 +1,9 @@
+
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useContext, useEffect, useState } from 'react';
 import allBuildingContext from '../../BuildingContext';
-import style from './style.module.css';
+import styles from './style.module.css';
 
 
 
@@ -68,30 +69,30 @@ return result.data;
 
 
   return (
-    <div className={style.formContainer}>
-
-      {neighborMessages && neighborMessages.length > 0 ?
-        <h1 class=" text-2xl font-semibold">   בחר הודעות למחיקה</h1>
-        : <h1 class=" text-2xl font-semibold">   אין לך הודעות</h1>
-
-      }  <br></br>
-      <form
-        onSubmit={handleSubmit}
-      >
-        {neighborMessages && neighborMessages.map((message, key) =>
-          <label>
-            <input
-              type="checkbox"
-              value={message.messageId}
-              name={`message_${message.messageId}`}
-            />
-            {message.title}
-          </label>
+    <div className={styles.formContainer}>
+    {neighborMessages && neighborMessages.length > 0 ? (
+        <h1 className="text-2xl font-semibold">בחר הודעות למחיקה</h1>
+    ) : (
+        <h1 className="text-2xl font-semibold">אין לך הודעות</h1>
+    )}
+    <br />
+    <form onSubmit={handleSubmit} className={styles.form}>
+        {neighborMessages && neighborMessages.map((message) => (
+            <div key={message.messageId} className={styles.label}>
+                <input
+                    type="checkbox"
+                    value={message.messageId}
+                    name={`message_${message.messageId}`}
+                    className={styles.checkbox}
+                />
+                <span>{message.title}</span>
+            </div>
+        ))}
+        {neighborMessages && neighborMessages.length > 0 && (
+            <button type="submit" className={styles.button}>מחק</button>
         )}
-
-        {neighborMessages && neighborMessages.length > 0 && <button type="submit">מחק</button>
-        }      </form>
-    </div>
+    </form>
+</div>
   )
 }
 
