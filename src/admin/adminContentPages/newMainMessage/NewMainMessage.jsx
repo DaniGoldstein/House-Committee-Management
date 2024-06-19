@@ -9,12 +9,12 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import adminContenxt from '../../AdminContext';
+import adminContext from '../../AdminContext';
 
 export default function NewMainMessage () {
   const [open, setOpen] = React.useState(false);
   const [inputErrors, setInputErrors] = React.useState();
-  const { allBuildingDetails, setAllBuildingDetails, fetchAllData } = useContext(adminContenxt);
+  const { allBuildingDetails, setAllBuildingDetails, fetchAllData } = useContext(adminContext);
   const handleClickOpen = () => {
     setOpen(true);
   };
