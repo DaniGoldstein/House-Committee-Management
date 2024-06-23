@@ -57,7 +57,9 @@ export default function BuildingRegistration() {
       )
       console.log(response);
       
-      if (response.status == 201) nav('/');
+      if (response.status == 201) {
+        alert("הבניין נרשם בהצלחה. כעת,המשתמש הראשון שיירשם למערכת יוגדר כמנהל הבניין.")
+        nav('/');}
 
 
     }

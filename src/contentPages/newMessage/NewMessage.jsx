@@ -98,12 +98,4 @@ export default function NewMessage () {
 
 
 
-// export default function NewMessage () {
-//   return (
-//     <div>
-     
-//       <input type='text'></input>
-//       <input type="submit"/>
-//     </div>
-//   )
-// }
+
