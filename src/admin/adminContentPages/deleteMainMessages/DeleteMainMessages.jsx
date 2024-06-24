@@ -48,8 +48,8 @@ export default function DeleteMainMessages() {
 
 
 
-  return (
-    
+  return (<>
+    {  
     
         <div className={styles.container}>
          { allBuildingDetails && allBuildingDetails.generalMessages.length < 1 ?
@@ -58,11 +58,13 @@ export default function DeleteMainMessages() {
         ) : (            <h1 className="text-2xl font-semibold">בחר הודעות למחיקה</h1>
 
         )}
-           <form onSubmit={handleSubmit} className={styles.form}>
+
+        {   allBuildingDetails && allBuildingDetails.generalMessages.length >= 1 ?
+          (
+          <form onSubmit={handleSubmit} className={styles.form}>
             {allBuildingDetails &&
               allBuildingDetails.generalMessages &&
               allBuildingDetails.generalMessages.map((message) => (
-                 
                 <div key={message._id} className={styles.label}>
                   <input
                     type="checkbox"
@@ -72,17 +74,11 @@ export default function DeleteMainMessages() {
                   />
                   <span>{message.title}</span>
                 </div>
-                 
               )
               )}
-
-{ allBuildingDetails && allBuildingDetails.generalMessages.length >= 1 ?
-          (         <button type="submit" className={styles.button}>מחק</button>
-
-        ) : null}
-
-             </form>  
-        </div>
-  
+            <button type="submit" className={styles.button}>מחק</button>
+          </form>):null}
+        </div>}
+  </>
   )
 }
